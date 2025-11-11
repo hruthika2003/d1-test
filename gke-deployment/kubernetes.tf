@@ -31,7 +31,7 @@ resource "kubernetes_deployment" "nginx" {
         container {
           image = "nginx:latest"
           name  = "nginx"
-          ports {
+          port {
             container_port = 80
           }
         }
@@ -45,6 +45,7 @@ resource "kubernetes_service" "nginx_service" {
     name      = "nginx-service"
     namespace = kubernetes_namespace.demo.metadata[0].name
   }
+
   spec {
     selector = {
       app = kubernetes_deployment.nginx.metadata[0].labels.app
