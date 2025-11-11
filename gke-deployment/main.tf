@@ -62,11 +62,7 @@ resource "google_container_node_pool" "primary_nodes" {
     ]
   }
 }
-resource "null_resource" "run_script" {
-  provisioner "local-exec" {
-    command = "bash ./setup.sh"
-  }
-}
+
 
 # Get Cluster Credentials
 data "google_client_config" "default" {}
